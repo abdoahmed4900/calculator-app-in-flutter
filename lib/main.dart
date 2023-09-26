@@ -1,11 +1,8 @@
+import 'package:calculator/constants.dart';
 import 'package:calculator/provider/calculator_provider.dart';
 import 'package:calculator/theme.dart';
 import 'package:calculator/widgets/calculator_field.dart';
-import 'package:calculator/widgets/fifth_row.dart';
-import 'package:calculator/widgets/first_row.dart';
-import 'package:calculator/widgets/fourth_row.dart';
-import 'package:calculator/widgets/second_row.dart';
-import 'package:calculator/widgets/third_row.dart';
+import 'package:calculator/widgets/normal_calc_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -54,15 +51,94 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: MediaQuery.sizeOf(context).height / 25,
             ),
-            const FirstRow(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                buildOperationCalcButton(
+                    context: context,
+                    operation: 'AC',
+                    foregroundColor: AppStrings.white,
+                    onPress: () {
+                      Provider.of<CalculatorProvider>(context, listen: false)
+                          .clear();
+                    },
+                    backgroundColor: AppStrings.rightColBackground),
+                buildOperationCalcButton(
+                    context: context,
+                    operation: '+/-',
+                    foregroundColor: AppStrings.white,
+                    backgroundColor: AppStrings.rightColBackground),
+                buildOperationCalcButton(
+                    context: context,
+                    operation: '%',
+                    foregroundColor: AppStrings.white,
+                    backgroundColor: AppStrings.rightColBackground),
+                buildOperationCalcButton(
+                    context: context,
+                    operation: '÷',
+                    foregroundColor: AppStrings.white,
+                    backgroundColor: AppStrings.rightColBackground),
+              ],
+            ),
             const Spacer(),
-            const SecondRow(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                buildNormalCalcButton(context: context, number: 7),
+                buildNormalCalcButton(context: context, number: 8),
+                buildNormalCalcButton(context: context, number: 9),
+                buildOperationCalcButton(
+                    context: context,
+                    operation: 'x',
+                    backgroundColor: AppStrings.rightColBackground,
+                    foregroundColor: AppStrings.white),
+              ],
+            ),
             const Spacer(),
-            const ThirdRow(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                buildNormalCalcButton(context: context, number: 4),
+                buildNormalCalcButton(context: context, number: 5),
+                buildNormalCalcButton(context: context, number: 6),
+                buildOperationCalcButton(
+                    context: context,
+                    operation: '-',
+                    backgroundColor: AppStrings.rightColBackground,
+                    foregroundColor: AppStrings.white),
+              ],
+            ),
             const Spacer(),
-            const FourthRow(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                buildNormalCalcButton(context: context, number: 1),
+                buildNormalCalcButton(context: context, number: 2),
+                buildNormalCalcButton(context: context, number: 3),
+                buildOperationCalcButton(
+                    context: context,
+                    operation: '+',
+                    backgroundColor: AppStrings.rightColBackground,
+                    foregroundColor: AppStrings.white)
+              ],
+            ),
             const Spacer(),
-            const FifthRow(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                buildNormalCalcButton(context: context, number: 0, width: 0.45),
+                buildOperationCalcButton(
+                    context: context,
+                    operation: ',',
+                    foregroundColor: AppStrings.white,
+                    backgroundColor: AppStrings.numbersColor),
+                buildOperationCalcButton(
+                    context: context,
+                    operation: '=',
+                    backgroundColor: AppStrings.rightColBackground,
+                    foregroundColor: AppStrings.white),
+              ],
+            ),
           ],
         ),
       ),

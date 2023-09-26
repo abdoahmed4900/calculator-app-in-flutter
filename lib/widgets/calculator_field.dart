@@ -19,7 +19,7 @@ class CalculatorField extends StatelessWidget {
         padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.sizeOf(context).width / 40),
         height: MediaQuery.sizeOf(context).height / 3,
-        decoration: BoxDecoration(color: Color(AppStrings.black)),
+        decoration: const BoxDecoration(color: AppStrings.black),
         alignment: Alignment.bottomRight,
         child: TextField(
           keyboardType: TextInputType.none,
